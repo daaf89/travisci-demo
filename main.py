@@ -9,7 +9,7 @@ basic_auth = BasicAuth(app)
 
 @app.route("/")
 def hello():
-    return "Hello World!"
+    return jsonify({'answer': "Hello World!"})
 
 
 @app.route('/multiply')

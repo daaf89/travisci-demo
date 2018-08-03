@@ -25,5 +25,10 @@ class FlaskTestCase(unittest.TestCase):
         response = json.loads(received.data.decode('utf-8'))
         self.assertEqual(response['answer'],'HELLO', 'test')
 
+    def test_hello(self):
+        received = self.app.get('/')
+        response = json.loads(received.data.decode('utf-8'))
+        self.assertEqual(response['answer'], 'Hello World!', 'test')
+
 if __name__ == '__main__':
     unittest.main()
