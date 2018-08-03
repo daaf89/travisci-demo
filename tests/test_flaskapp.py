@@ -15,12 +15,15 @@ class FlaskTestCase(unittest.TestCase):
 
     def test_multiply(self):
         response = self.app.get('/multiply?x=5&y=7')
-        resp = json.loads(response.data)
+        resp = json.loads(response.data.decode('utf-8'))
         self.assertEqual(resp['answer'],35,'Multiply endpoint failed known answer 7*5 = 35')
 
 
     # TODO DEFINE TWO MORE TESTS ON THE END POINTS
-
+    def test_touppercase(self):
+        received = self.app.get('/touppercase?s=hello')
+        response = json.loads(received.data.decode('utf-8'))
+        self.assertEqual(response['answer'],'HELLO', 'test')
 
 if __name__ == '__main__':
     unittest.main()
